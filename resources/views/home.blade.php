@@ -1,4 +1,10 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'kakeibo')
+
+@section('content_header')
+    <h1>kakeibo</h1>
+@stop
 
 @section('content')
 <div class="container">
@@ -14,6 +20,14 @@
                     @endif
 
                     <!-- kakeibo一覧表示 -->
+
+                    <?php foreach ($error as $value) { ?>
+                        <?php print htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); ?> 
+                    <?php } ?>
+
+                    @if($trn_kakeibo == '')
+                            <p>データがありません。</p>
+                    @else
                     <table class="table table-striped">
                     <thead>
                         <tr><th scope="col">日付</th>
@@ -24,29 +38,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($trn_kakeibo as $detail)
                         <tr>
-                            <td>1(金)</td>
-                            <td>Saya</td>
-                            <td>食費</td>
-                            <td>1000円</td>
-                            <td>特になし</td>
+                            <td>{{ $detail->date }}</td>
+                            <td>{{ $detail->payer }}</td>
+                            <td>{{ $detail->category }}</td>
+                            <td>{{ $detail->price }}</td>
+                            <td>{{ $detail->remarks }}</td>
                         </tr>
-                        <tr>
-                            <td>1(金)</td>
-                            <td>Rin</td>
-                            <td>食費</td>
-                            <td>2000円</td>
-                            <td>特になし</td>
-                        </tr>
-                        <tr>
-                            <td>2(土)</td>
-                            <td>Saya</td>
-                            <td>日用品</td>
-                            <td>30円</td>
-                            <td>特になし</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                     </table>
+                    @endif
+
+                    {{ $trn_kakeibo }}
 
                 </div>
             </div>
@@ -55,4 +60,12 @@
         </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop
