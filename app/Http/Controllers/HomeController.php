@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         // kakeibo一覧を取得する
-        $trn_kakeibo = Trn_kakeibo::where('kakeibo_id', '1');
+        $trn_kakeibo = Trn_kakeibo::where('kakeibo_id', '1')->get();
         $error = array();
 
         return view('home', ["trn_kakeibo" => $trn_kakeibo, "error" => $error]);

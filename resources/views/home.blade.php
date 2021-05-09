@@ -51,8 +51,6 @@
                     </table>
                     @endif
 
-                    {{ $trn_kakeibo }}
-
                 </div>
             </div>
             <!-- kakeibo新規登録--> 
