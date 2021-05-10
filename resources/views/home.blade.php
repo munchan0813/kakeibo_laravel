@@ -10,8 +10,23 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
             <div class="card">
-                <div class="card-header"><?php echo date('Y/m');?></div>
+                <div class="card-header">
+                    <button><</button>
+                    <?php echo date('Y/m');?>
+                    <button>></button>
+                    </div>
+                <div class="card-body">
+                <!-- ユーザー毎にforeachで出せる様にする -->
+                    <p>Saya:</p>
+                    <p>Rin:</p>
+                    <p>合計：</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">詳細</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -46,10 +61,10 @@
                     </table>
                     @endif
 
-                    <p>合計：</p>
-
                 </div>
             </div>
+
+
             <!-- kakeibo新規登録--> 
             <a href="{{ url('/kakeibo/create') }}">kakeiboをつける</a>
         </div>

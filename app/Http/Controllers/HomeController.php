@@ -47,5 +47,27 @@ class HomeController extends Controller
         return $trn_kakeibo;
     }
 
+    /**
+     * 対象kakeiboのユーザーを取得する
+     *
+     * @return 
+     */
+    public function getKakeiboUsers($kakeibo_id)
+    {
+        
+    }
+
+    /**
+     * 対象kakeiboの当月のユーザーごとの出費合計を取得する
+     *
+     * @return 
+     */
+    public function getSumPriceByUsers($kakeibo_id, $users)
+    {
+        
+    }
+
+
+
 
 }
