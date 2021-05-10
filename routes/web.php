@@ -19,8 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// ホーム画面
+// kakeiboデータ出力
 Route::get('/home', 'HomeController@index')->name('home');
 
+// kakeiboデータを登録
 Route::get('/kakeibo/create', 'KakeiboController@create')->name('kakeibo.create');
 Route::post('/kakeibo/create', 'KakeiboController@add')->name('kakeibo.add');

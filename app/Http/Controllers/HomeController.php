@@ -18,16 +18,34 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * HOMEのデフォルトは当月のデータを表示する。
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        // kakeibo一覧を取得する
-        $trn_kakeibo = Trn_kakeibo::where('kakeibo_id', '1')->get();
-        $error = array();
-
-        return view('home', ["trn_kakeibo" => $trn_kakeibo, "error" => $error]);
+        // 当月のデータを返す
+        $this_month = date('Y-m');
+        $trn_kakeibo = $this->getTargetMonthData('1', $this_month);
+        
+        return view('home', ["trn_kakeibo" => $trn_kakeibo]);
     }
+
+    /**
+     * 対象kakeiboの対象月のデータを取得する
+     *
+     * @return 
+     */
+    public function getTargetMonthData($kakeibo_id, $month)
+    {
+        // kakeibo一覧を取得する
+        $trn_kakeibo = Trn_kakeibo::where('kakeibo_id', $kakeibo_id)
+            ->where('date', 'like', "$month%")
+            ->orderBy('id', 'asc')
+            ->get();
+
+        return $trn_kakeibo;
+    }
+
+
 }

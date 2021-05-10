@@ -20,11 +20,6 @@
                     @endif
 
                     <!-- kakeibo一覧表示 -->
-
-                    <?php foreach ($error as $value) { ?>
-                        <?php print htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); ?> 
-                    <?php } ?>
-
                     @if($trn_kakeibo == '')
                             <p>データがありません。</p>
                     @else
@@ -50,6 +45,8 @@
                     </tbody>
                     </table>
                     @endif
+
+                    <p>合計：</p>
 
                 </div>
             </div>
