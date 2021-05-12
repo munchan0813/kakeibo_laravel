@@ -3,7 +3,7 @@
 @section('title', 'kakeibo')
 
 @section('content_header')
-    <h1>kakeibo</h1>
+
 @stop
 
 @section('content')
@@ -65,8 +65,9 @@
             </div>
 
 
-            <!-- kakeibo新規登録--> 
-            <a href="{{ url('/kakeibo/create') }}">kakeiboをつける</a>
+            <!-- kakeibo詳細新規登録--> 
+            <a href="{{ url('/kakeibo/create') }}">kakeiboをつける</a></br>
+
         </div>
     </div>
 </div>

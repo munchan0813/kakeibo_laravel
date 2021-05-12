@@ -14,11 +14,28 @@ class KakeiboController extends Controller
     }
 
     // kakeiboを登録する
-    public function add(Request $request) {
+    public function addKakeibo(Request $request) {
+
         $trn_kakeibo = new Trn_kakeibo();
         $trn_kakeibo->kakeibo_id = $request->kakeibo_id;
         $trn_kakeibo->date = $request->date;
-        $trn_kakeibo->payer = $request->payer;
+        $trn_kakeibo->user_id = $request->user_id;
+        $trn_kakeibo->category = $request->category;
+        $trn_kakeibo->price = $request->price;
+        $trn_kakeibo->remarks = $request->remarks;
+        
+        $trn_kakeibo->save();
+
+        return view('kakeibo.create');
+    }
+
+    // kakeibo詳細情報を登録する
+    public function add(Request $request) {
+
+        $trn_kakeibo = new Trn_kakeibo();
+        $trn_kakeibo->kakeibo_id = $request->kakeibo_id;
+        $trn_kakeibo->date = $request->date;
+        $trn_kakeibo->user_id = $request->user_id;
         $trn_kakeibo->category = $request->category;
         $trn_kakeibo->price = $request->price;
         $trn_kakeibo->remarks = $request->remarks;

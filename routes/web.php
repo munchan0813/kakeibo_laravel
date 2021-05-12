@@ -13,15 +13,22 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-	// kakeibo topになるようにする
+	// kakeibo topになるようにする?
     return view('welcome');
 });
 
 Auth::routes();
 
-// kakeiboデータ出力
+// kakeibo一覧出力
 Route::get('/home', 'HomeController@index')->name('home');
 
-// kakeiboデータを登録
+
+// kakeibo新規作成
+Route::get('/kakeibo/createKakeibo', 'HomeController@createIndex')->name('kakeibo.createKakeibo');
+Route::post('/kakeibo/createKakeibo', 'HomeController@add')->name('kakeibo.addKakeibo');
+
+
+// kakeibo詳細登録画面
 Route::get('/kakeibo/create', 'KakeiboController@create')->name('kakeibo.create');
+// kakeibo詳細を登録
 Route::post('/kakeibo/create', 'KakeiboController@add')->name('kakeibo.add');

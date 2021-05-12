@@ -1,6 +1,13 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
-@section('kakeibo.create')
+@section('title', 'kakeibo')
+
+@section('content_header')
+
+@stop
+
+@section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -18,11 +25,12 @@
             </div>
 
             <!-- 支払い者 -->
-            <!-- 後でログインユーザーがデフォルトになるようにする-->
             <div class="form-group pb-3">
-                {{Form::label('payer','支払い者')}}
-
-                    {{Form::select('payer', ['Saya' => 'Saya', 'Rin' => 'Rin'], 'ユーザーを選択して下さい', ['class' => 'form-control','id' => 'payer'])}}
+                {{Form::label('user_id','支払い者')}}
+                <!-- 後ほどDBからmst_user取ってきて出す -->
+                <!-- 後でログインユーザーがデフォルトになるようにする-->
+                <!-- むしろ、ログインユーザーしか出ない様にすべきか？ -->
+                    {{Form::select('user_id', ['1' => 'Saya', '2' => 'Rin'], 'ユーザーを選択して下さい', ['class' => 'form-control','id' => 'user_id'])}}
             </div>
 
             <!-- カテゴリ -->
@@ -54,4 +62,14 @@
         </div>
     </div>
 </div>
-@endsection
+
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop
+
